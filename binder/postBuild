@@ -1,0 +1,8 @@
+#!/bin/bash
+curl -L https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz > geckodriver.tar.gz
+tar -xzf geckodriver.tar.gz -C /srv/conda/bin/
+rm -f geckodriver.tar.gz
+python -m robotkernel.install --sys-prefix
+jupyter labextension install jupyterlab_robotmode --no-build
+jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
+jupyter lab build --minimize=True --dev-build=False --debug
